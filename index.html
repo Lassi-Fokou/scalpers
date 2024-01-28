@@ -766,7 +766,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-   <form action="mailto:scalpersfx123@gmail.com" method="post" role="form" class="php-email-form">
+ <form onsubmit="sendEmail(event)" role="form" class="php-email-form">
   <div class="row">
     <div class="col-md-6 form-group">
       <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -790,6 +790,24 @@
     <button type="submit">Send Message</button>
   </div>
 </form>
+
+<script>
+  function sendEmail(event) {
+    event.preventDefault(); // Prevent form submission
+
+    var form = event.target;
+    var recipient = "scalpersfx123@gmail.com"; // Replace with your email address
+
+    var name = form.elements.name.value;
+    var email = form.elements.email.value;
+    var subject = form.elements.subject.value;
+    var message = form.elements.message.value;
+
+    var mailtoLink = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message);
+
+    window.location.href = mailtoLink;
+  }
+</script>
           </div>
 
         </div>
